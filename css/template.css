@@ -1,0 +1,105 @@
+*{
+	text-decoration: none;
+	margin-top: 0px;
+	margin-left: 0px;
+}
+
+body{
+	background-color: #e6f7ff;
+}
+
+header {
+	width: 100%;
+	height: 100px;
+	background-color: #222222;
+	position: fixed;
+
+}
+
+nav ul{
+	float: right;
+	margin-top: 45px;
+	margin-right: 60px;
+}
+
+nav ul li{
+	list-style: none;
+	float: left;
+	margin-right: 20px;
+}
+
+nav ul li a{
+	color: #fff;
+	font-family: Arial;
+	font-size: 16px;
+}
+
+#navdiv{
+	float: right;
+	80%
+}
+
+#logodiv{
+	float: left;
+	width: 20%;
+	padding-left: 20px;
+}
+
+#logo{
+	height: 90px;
+	padding: 10px;
+}
+
+
+#maindiv{
+
+	width: 100%;
+	background-color:red;
+	height: auto;
+}
+
+#leftdiv{
+	float: left;
+	width: 23%;
+	height: 100%;
+	background-color: ;
+	margin-top: 100px;
+	padding-top: 20px;
+	padding-left: 20px;
+
+}
+
+#rightdiv{
+	margin-top: 100px;
+	float: right;
+	width: 72%;
+	height:100% ;
+	background-color:  ;
+	padding-top: 20px;
+	padding-left: 20px;
+	border-left: solid;
+
+}
+
+#logout{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    width: 100px;
+    height: 30px;
+    padding: 3%;
+    background: #43D1AF;
+    border-bottom: 2px solid #30C29E;
+    border-top-style: none;
+    border-right-style: none;
+    border-left-style: none;    
+    color: #fff;
+    cursor: pointer;
+}
+#logout{
+    background: #2EBC99;
+}
+
+
+
+

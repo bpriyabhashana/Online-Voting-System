@@ -1,5 +1,5 @@
 <?php
- // session_start();
+ //session_start();
   include '../header/header.php';
 
 ?>
@@ -14,34 +14,43 @@
 	<link rel="stylesheet" type="text/css" href="../css/table.css" />
   <link rel="stylesheet" type="text/css" href="../css/form.css" />
  <link rel="stylesheet" type="text/css" href="../css/template.css" />
+ <link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
 
 </head>
 
 <body>
- <div id="maindiv">
+ <div id="maindiv" >
 
      <header>
 
-    <div id="logodiv"><img src="../images/logo.png" id="logo"></div>
+    <div id="logodiv"><img src="../images/logo.png" id="logo" ></div>
     <div id="navdiv">
       <nav>
         <ul>
-          <li><a href="#"><h3>
-             <?php
+          <li role="presentation"><p style="color:white; font-size: 20px; margin-right: 50px" >
+        <?php
           if (isset($_SESSION['uname'])) {
             echo "HI ".$_SESSION['uname'];
           }
         ?>
-          </h3></a></li>
+          </p></li>
           <li><a href="#"> <form action="../include/logout.php">
-       <button type="submit" id="logout">LOG OUT</button>
+       <button type="submit" id="logout" style="background: transparent;" >LOG OUT</button>
        </form></a></li>
         </ul>
       </nav>
     </div>
     </header>
 
-    <div id="leftdiv"></div>
+    <div id="leftdiv">
+      
+    <a href="../formpage/addElection.php"><img src="../images/png/1.png" class="img-responsive navimg"></a>
+    <img src="../images/png/2.png" class="img-responsive navimg">
+    <img src="../images/png/3.png" class="img-responsive navimg">
+    <img src="../images/png/4.png" class="img-responsive navimg">
+    <img src="../images/png/5.png" class="img-responsive navimg">
+
+    </div>
 
 
     <div id="rightdiv">
@@ -60,7 +69,7 @@
         <hr />
         <div style="height:auto" id="tablediv" >
 
-       		 <?php
+       		<!--  <?php
  include '../include/dbhandler.php';
       $sql = "SELECT uname, candiname, party FROM candidate";
 $result = $conn->query($sql);
@@ -80,7 +89,7 @@ if ($result->num_rows > 0) {
     echo "0 results";
 }
 $conn->close();
-?>  
+?>   -->
 
       	</div>
        

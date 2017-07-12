@@ -5,7 +5,7 @@
 }
 
 body{
-	background-color: #e6f7ff;
+	
 }
 
 header {
@@ -54,30 +54,29 @@ nav ul li a{
 #maindiv{
 
 	width: 100%;
-	background-color:red;
 	height: auto;
 }
 
 #leftdiv{
-	float: left;
+/*	float: left;
 	width: 23%;
 	height: 100%;
 	background-color: ;
 	margin-top: 100px;
 	padding-top: 20px;
-	padding-left: 20px;
+	padding-left: 20px;*/
 
 }
 
 #rightdiv{
 	margin-top: 100px;
-	float: right;
-	width: 72%;
+	float: left;
+	width: 100%;
 	height:100% ;
 	background-color:  ;
 	padding-top: 20px;
 	padding-left: 20px;
-	border-left: solid;
+	
 
 }
 

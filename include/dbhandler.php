@@ -1,7 +1,7 @@
 <?php
 
 
-$conn = mysqli_connect("localhost","root", "", "onlineVoting");
+$conn = mysqli_connect("localhost","root", "", "votepool");
 
 if (!$conn) {
 	die("Connection failed:".mysqli_connect_error());

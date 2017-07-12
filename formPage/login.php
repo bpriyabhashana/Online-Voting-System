@@ -8,6 +8,7 @@ include '../header/header.php';
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" type="text/css" href="../css/form.css">
 <link rel="stylesheet" type="text/css" href="../css/template.css" />
+<link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
 
 <title>Untitled Document</title>
 
@@ -22,8 +23,8 @@ include '../header/header.php';
       <div id="navdiv">
         <nav>
           <ul>
-            <li><a href="../index.php">HOME</a></li>
-            <li><a href="signup.php">SIGN UP</a></li>
+            <li role="presentation"><a href="../index.php">HOME</a></li>
+            <!-- <li><a href="signup.php">SIGN UP</a></li> -->
           </ul>
         </nav>
       </div>
@@ -43,7 +44,7 @@ include '../header/header.php';
               <select name="typeSelect" size="1">
                     <option>--Select Account type--</option>
                         <option value="admin">Administrator</option>
-                        <option value="candidate">Candidate</option>
+                        <option value="Inspector">Inspector</option>
                 </select>
 
                  <?php
@@ -55,7 +56,7 @@ include '../header/header.php';
                 ?>
 
              
-             <input name="uname" type="text" maxlength="40" placeholder="User ID" />
+             <input name="uname" type="text" maxlength="40" placeholder="User ID" autocomplete="off" />
           
           
          

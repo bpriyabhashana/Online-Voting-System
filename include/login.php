@@ -9,7 +9,7 @@ $uname = $_POST['uname'];
 $password = $_POST['password'];
 
 if ($typeSelect=='admin') {
-	$sql = "SELECT * FROM admin WHERE uname = '$uname' AND password='$password'";
+	$sql = "SELECT * FROM admin WHERE name = '$uname' AND password='$password'";
 $result = $conn->query($sql);
 
 
@@ -35,17 +35,17 @@ if (!$row = $result->fetch_assoc()) {
 	
 }
 else{
-	$_SESSION['uname']= $row['uname'];
+	$_SESSION['uname']= $row['name'];
 	header("Location: ../pages/admin.php");
 }
 
 }
 
 
-else if ($typeSelect=='candidate') {
+else if ($typeSelect=='inspector') {
 	
 
-	$sql = "SELECT * FROM candidate where uname = '$uname'";
+$sql = "SELECT * FROM inspector where name = '$uname'";
 $result = $conn->query($sql);
 $row = $result->fetch_assoc();
 $hash_password = $row['password'];
@@ -58,7 +58,7 @@ if ($hash == 0) {
 
 } else{
 
-$sql = "SELECT * FROM candidate WHERE uname = '$uname' AND password='$hash_password'";
+$sql = "SELECT * FROM inspector WHERE name = '$uname' AND password='$hash_password'";
 $result = $conn->query($sql);
  
 if (!$row = $result->fetch_assoc()) { 
@@ -67,7 +67,7 @@ if (!$row = $result->fetch_assoc()) {
 	
 }
 else{
-	$_SESSION['uname']= $row['uname'];
+	$_SESSION['uname']= $row['name'];
 	header("Location: ../pages/candidate.php");
 }
 

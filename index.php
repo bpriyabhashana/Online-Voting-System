@@ -10,7 +10,7 @@ include 'header/header.php';
 <link rel="stylesheet" type="text/css" href="css/index.css" />
 <link rel="stylesheet" type="text/css" href="css/template.css" />
 <link rel="stylesheet" type="text/css" href="css/index.css" />
-
+ <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
 
 
 
@@ -28,7 +28,7 @@ include 'header/header.php';
   <nav>
     <ul>
       <li role="presentation"><a href="formPage/login.php">LOG IN</a></li>
-      <li role="presentation"><a href="formPage/signup.php">SIGN UP</a></li>
+     <!--  <li role="presentation"><a href="formPage/signup.php">SIGN UP</a></li> -->
     </ul>
   </nav>
 </div>

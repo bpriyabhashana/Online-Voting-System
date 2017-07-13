@@ -35,7 +35,7 @@ else{
 		VALUES ('$type','$date','$startTime','$endTime')";
 		$result = $conn->query($sql);
 
-		header("Location: ../formPage/addElection.php");
+		header("Location: ../formPage/addElection.php?submitted");
 	
 }
 

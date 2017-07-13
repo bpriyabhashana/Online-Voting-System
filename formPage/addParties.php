@@ -11,7 +11,7 @@ include '../header/header.php';
 <link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
 
 
-<title>Untitled Document</title>
+<title>Add parties</title>
 
 </head>
 
@@ -34,11 +34,11 @@ include '../header/header.php';
 
 <div id="rightdiv">
     <div id="requestDiv">
-    	<h1 align="center">ADD ELECTION</h1>
+    	<h1 align="center">ADD PARTIES</h1>
         <hr />
 
         <div class="form-style-6" id="formdiv">
-        <h1>ADD ELECTION</h1>
+        <h1>ADD PARTIES</h1>
 
          <?php
               $url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
@@ -48,21 +48,14 @@ include '../header/header.php';
 
           ?>
         
-         <form action="../include/addElection.php" method="POST">
+         <form action="../include/addParties.php" method="POST" enctype="multipart/form-data">
        
          
-            <select name="type">
-               <option value="-- Enter Election Type --">-- Enter Election Type --</option>
-              <option value="Presidential Election">Presidential Election</option>
-              <option value="Parliamentary Election">Parliamentary Election</option>
-            </select>
-             	
-            Enter Date
-            <input type="date" name="date" placeholder="Date" value="yyyy/mm/dd">
-            Start Time
-            <input type="time" name="startTime" placeholder="Start Time">
-             End Time
-            <input type="time" name="endTime" placeholder="End Time">
+            <input type="text" name="partyId" placeholder="Party ID">
+           
+            <input type="text" name="name" placeholder="Party Name">
+             Upload Logo
+            <input type="file" name="logo">
        
         
               <?php
@@ -74,7 +67,7 @@ include '../header/header.php';
                 ?>
              
          <input type="reset" value="reset">
-        <input type="submit">
+        <input type="submit" name="upload">
        
          
           <!--Error handling result view-->

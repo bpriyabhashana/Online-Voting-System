@@ -90,3 +90,18 @@
         cursor: pointer;
 
 }
+
+
+.form-style-6 input[type="file"]{
+  position: ;
+   top: 150px;
+   font-family: calibri;
+   width: 100%;
+   padding: 10px;
+   margin-top: 5px;
+   margin-bottom: 10px;
+   border: 1px solid #BBB; 
+   text-align: center;
+   background-color:;
+   cursor:pointer;
+}

@@ -8,7 +8,7 @@ create database votepool;
 	);
 
 	create table election(
-		type varchar(50) NOT NULL PRIMARY KEY,
+		type varchar(50) NOT NULL,
 		eday date NOT NULL,
 		startTime time NOT NULL,
 		endTime time NOT NULL
@@ -33,19 +33,21 @@ create database votepool;
 	);
 
 	create table party(
-		partyId int(10)  NOT NULL AUTO_INCREMENT PRIMARY KEY,
+		partyId varchar(20)  NOT NULL PRIMARY KEY,
 		name varchar(50) NOT NULL,
 		logo varchar(200) NOT NULL,
-		votes int(10) NOT NULL
+		votes int(10) 
 	);
 
 	create table candidate(
-		candidateNumber int(10) NOT NULL PRIMARY KEY,
+		no int(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+		candidateNumber int(10) NOT NULL,
 		name varchar(50) NOT NULL,
 		province varchar(20) NOT NULL,
 		electrolDistrictId varchar(20) NOT NULL,
-		partyId int(10) NOT NULL,
-		photo varchar(200) NOT NULL
+		partyId varchar(20) NOT NULL,
+		photo varchar(200) NOT NULL,
+		votes int(10) 
 	);
 
 	create table seats(

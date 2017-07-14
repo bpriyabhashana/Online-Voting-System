@@ -14,11 +14,25 @@ create database votepool;
 		endTime time NOT NULL
 	);
 
-	create table inspector(
+	create table districtInspector(
 		id varchar(20) NOT NULL PRIMARY KEY,
 		name varchar(50) NOT NULL,
 		password varchar(50) NOT NULL,
-		pollingDistrict varchar(20) NOT NULL
+		electrolDistrict varchar(20) NOT NULL
+	);
+
+	create table divisionInspector(
+		id varchar(20) NOT NULL PRIMARY KEY,
+		name varchar(50) NOT NULL,
+		password varchar(50) NOT NULL,
+		electrolDistrict varchar(20) NOT NULL
+	);
+
+	create table stationInspector(
+		id varchar(20) NOT NULL PRIMARY KEY,
+		name varchar(50) NOT NULL,
+		password varchar(50) NOT NULL,
+		electrolDistrict varchar(20) NOT NULL
 	);
 
 	create table voters(

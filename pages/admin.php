@@ -47,8 +47,9 @@
     <a href="../formpage/addElection.php" target="blank"><img src="../images/png/1.png" class="img-responsive navimg"></a>
     <a href="../formpage/addParties.php" target="blank"><img src="../images/png/2.png" class="img-responsive navimg"></a>
     <a href="../formpage/addCandidates.php" target="blank"><img src="../images/png/3.png" class="img-responsive navimg"></a>
-    <img src="../images/png/4.png" class="img-responsive navimg">
     <img src="../images/png/5.png" class="img-responsive navimg">
+    <a href="../formpage/addVoters.php" target="blank"><img src="../images/png/4.png" class="img-responsive navimg"></a>
+    
 
     </div>
 

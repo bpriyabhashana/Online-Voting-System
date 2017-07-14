@@ -5,7 +5,7 @@ session_start();
 include 'dbhandler.php';
 if (isset($_POST['upload'])) {
 	
-	$number = $_POST['number'];
+	$candidateNumber= $_POST['number'];
 	$name = $_POST['name'];
 	$province = $_POST['province'];
 	$electrolDistrictId = $_POST['electrolDistrictId'];
@@ -14,7 +14,7 @@ if (isset($_POST['upload'])) {
 
 
 	//error handling for empty fields
-	if (empty($number)) {
+	if (empty($candidateNumber)) {
 		header("Location: ../formPage/addCandidates.php?error=empty");
 		exit();
 	}

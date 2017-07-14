@@ -9,8 +9,8 @@ include 'header/header.php';
 <title>Untitled Document</title>
 <link rel="stylesheet" type="text/css" href="css/index.css" />
 <link rel="stylesheet" type="text/css" href="css/template.css" />
-<link rel="stylesheet" type="text/css" href="css/index.css" />
  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+ 
 
 
 

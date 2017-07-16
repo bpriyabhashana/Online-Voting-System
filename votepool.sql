@@ -14,25 +14,25 @@ create database votepool;
 		endTime time NOT NULL
 	);
 
-	create table districtInspector(
+	create table districtInspectors(
 		id varchar(20) NOT NULL PRIMARY KEY,
 		name varchar(50) NOT NULL,
-		password varchar(50) NOT NULL,
-		electrolDistrict varchar(20) NOT NULL
+		password varchar(50),
+		electrolDistrictId varchar(20) NOT NULL
 	);
 
-	create table divisionInspector(
+	create table divisionInspectors(
 		id varchar(20) NOT NULL PRIMARY KEY,
 		name varchar(50) NOT NULL,
-		password varchar(50) NOT NULL,
-		electrolDistrict varchar(20) NOT NULL
+		password varchar(50),
+		pollingDivisionId varchar(20) NOT NULL
 	);
 
-	create table stationInspector(
+	create table stationInspectors(
 		id varchar(20) NOT NULL PRIMARY KEY,
 		name varchar(50) NOT NULL,
-		password varchar(50) NOT NULL,
-		electrolDistrict varchar(20) NOT NULL
+		password varchar(50),
+		pollingDistrictId varchar(20) NOT NULL
 	);
 
 	create table voters(
@@ -41,9 +41,7 @@ create database votepool;
 		electrolDistrictId varchar(20) NOT NULL,
 		pollingDivision varchar(20) NOT NULL,
 		pollingDistrict varchar(20) NOT NULL,
-		photo varchar(200) NOT NULL,
-		approveStatus int(1),
-		votedStatus int(1)
+		photo varchar(200) NOT NULL
 	);
 
 	create table party(
@@ -84,7 +82,7 @@ create database votepool;
 	ALTER TABLE area ADD FOREIGN KEY (electrolDistrictId) REFERENCES seats(electrolDistrictId);
 	
 
-
+	INSERT tempVoters SELECT nic FROM voters;
 
 
 	

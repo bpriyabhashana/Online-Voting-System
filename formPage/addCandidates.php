@@ -65,7 +65,7 @@ include '../header/header.php';
 
                echo "<select name='province'>";
               // output data of each row
-                echo "<option value='-- Select Province'>-- Select Province --</option>";
+                echo "<option value='-- Select Province --'>-- Select Province --</option>";
               while($row = $result->fetch_assoc()) {
 
                   echo "<option value='" . $row['province'] ."'>" . $row['province']."</option>";
@@ -87,7 +87,7 @@ include '../header/header.php';
 
                echo "<select name='electrolDistrictId'>";
               // output data of each row
-                echo "<option value='-- Select District'>-- Select District --</option>";
+                echo "<option value='-- Select District --'>-- Select District --</option>";
               while($row = $result->fetch_assoc()) {
 
                   echo "<option value='" . $row['electrolDistrictId'] ."'>" . $row['electrolDistrict']."</option>";
@@ -109,7 +109,7 @@ include '../header/header.php';
 
                echo "<select name='partyId'>";
               // output data of each row
-                echo "<option value='-- Select Party'>-- Select Party --</option>";
+                echo "<option value='-- Select Party --'>-- Select Party --</option>";
               while($row = $result->fetch_assoc()) {
 
                   echo "<option value='" . $row['partyId'] ."'>" . $row['name']."</option>";

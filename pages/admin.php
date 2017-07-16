@@ -11,10 +11,12 @@
 
 <title>Untitled Document</title>
 
+  <link rel="stylesheet" type="text/css" href="../css/index.css" />
 	<link rel="stylesheet" type="text/css" href="../css/table.css" />
   <link rel="stylesheet" type="text/css" href="../css/form.css" />
  <link rel="stylesheet" type="text/css" href="../css/template.css" />
  <link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
+ 
 
 </head>
 
@@ -27,16 +29,20 @@
     <div id="navdiv">
       <nav>
         <ul>
-          <li role="presentation"><p style="color:white; font-size: 20px; margin-right: 50px" >
+          <li role="presentation"><p style="font-size: 20px; margin-right: 50px; color:yellow;" >
         <?php
           if (isset($_SESSION['uname'])) {
             echo "HI ".$_SESSION['uname'];
           }
         ?>
           </p></li>
-          <li><a href="#"> <form action="../include/logout.php">
-       <button type="submit" id="logout" style="background: transparent;" >LOG OUT</button>
+            <li role="presentation"> <a href="#"> <form>
+       <button type="submit" id="logout" style="background: transparent;" >Add Admin</button>
        </form></a></li>
+          <li><a href="#"> <form action="../include/logout.php">
+       <button type="submit" id="logout" style="background: transparent;" >Sign Out</button>
+       </form></a></li>
+
         </ul>
       </nav>
     </div>
@@ -47,7 +53,7 @@
     <a href="../formpage/addElection.php" target="blank"><img src="../images/png/1.png" class="img-responsive navimg"></a>
     <a href="../formpage/addParties.php" target="blank"><img src="../images/png/2.png" class="img-responsive navimg"></a>
     <a href="../formpage/addCandidates.php" target="blank"><img src="../images/png/3.png" class="img-responsive navimg"></a>
-    <img src="../images/png/5.png" class="img-responsive navimg">
+    <a href="../formpage/addInspectors.php" target="blank"><img src="../images/png/5.png" class="img-responsive navimg"></a>
     <a href="../formpage/addVoters.php" target="blank"><img src="../images/png/4.png" class="img-responsive navimg"></a>
     
 
@@ -57,7 +63,7 @@
     <div id="rightdiv">
 
       <div id="titleDiv">
-        <h1 align="center">Admin page</h1>
+        <h1 align="center">ADMIN PAGE</h1>
       </div>
       
      
@@ -92,7 +98,65 @@ if ($result->num_rows > 0) {
 $conn->close();
 ?>   -->
 
-      	</div>
+
+
+
+<h3></h3>
+
+<div class="wrapper">
+      <div class="col_third">
+        <div class="hover panel">
+          <div class="front">
+            <div class="box1">
+              <div class="boxhed"><p>Front Side</p></div>
+              
+            </div>
+          </div>
+          <div class="back">
+            <div class="box2">
+              <p>Back Side</p>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <div class="col_third">
+        <div class="hover panel">
+          <div class="front">
+            <div class="box1">
+              <p>Front Side</p>
+            </div>
+          </div>
+          <div class="back">
+            <div class="box2">
+              <p>Back Side</p>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <div class="col_third end">
+        <div class="hover panel">
+          <div class="front">
+            <div class="box1">
+              <p>Front Side</p>
+            </div>
+          </div>
+          <div class="back">
+            <div class="box2">
+              <p>Back Side</p>
+            </div>
+          </div>
+        </div>
+      </div>
+   </div>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+        <script src="../js/index.js"></script>
+
+
+
+      	</div> <!-- end of right div -->
        
        
  </div>

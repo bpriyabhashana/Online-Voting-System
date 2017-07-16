@@ -11,7 +11,7 @@ include '../header/header.php';
 <link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
 
 
-<title>Add parties</title>
+<title>Add District Inspectors</title>
 
 </head>
 
@@ -34,13 +34,11 @@ include '../header/header.php';
 
 <div id="rightdiv">
     <div id="requestDiv">
-
-    <!-- ===============Add Parties=================== -->
-    	<h1 align="center">ADD PARTIES</h1>
+    	<h1 align="center">ADD DISTRICT INSPECTORS</h1>
         <hr />
 
         <div class="form-style-6" id="formdiv">
-        <h1>ADD PARTIES</h1>
+        <h1>ADD INSPECTORS</h1>
 
          <?php
               $url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
@@ -50,23 +48,48 @@ include '../header/header.php';
 
           ?>
         
-         <form action="../include/addParties.php" method="POST" enctype="multipart/form-data">
+         <form action="../include/addInspectors.php" method="POST" enctype="multipart/form-data">
        
-         
-            <input type="text" name="partyId" placeholder="Party ID">
+          
+             <?php
+           include '../include/dbhandler.php';
+                $sql = "SELECT DISTINCT electrolDistrict, electrolDistrictId FROM seats ORDER BY electrolDistrict";
+          $result = $conn->query($sql);
+
+          if ($result->num_rows > 0) {
+               // output data of each row
+
+               echo "<select name='electrolDistrictId'>";
+              // output data of each row
+                echo "<option value='-- Select District --'>-- Select District --</option>";
+              while($row = $result->fetch_assoc()) {
+
+                  echo "<option value='" . $row['electrolDistrictId'] ."'>" . $row['electrolDistrict']."</option>";
+              }
+              echo "</select>";
+          } else {
+              echo "0 results";
+          }
+          $conn->close();
+          ?> 
+
+
+
+
+            <input type="text" name="id" placeholder="Inspector NIC No.">
            
-            <input type="text" name="name" placeholder="Party Name">
-             Upload Logo
-            <input type="file" name="logo">
-       
-        
-              <?php
+            <input type="text" name="name" placeholder="Inspector Name">
+
+           
+             <?php
                   $url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
                   if (strpos($url, 'error=empty')!== false) {
                     echo "<font color='red'> *Fill all required empty fields </font>";
                   }
 
                 ?>
+             
+         
              
          <input type="reset" value="reset">
         <input type="submit" name="upload">
@@ -77,16 +100,10 @@ include '../header/header.php';
                
            
         </form>
-
+        
 
         </div>
-
-       <!--  =================Update Parties=================== -->
-
-
-
-              
-       <!--  end of update -->
+        
   </div>
   </div>
 </body>

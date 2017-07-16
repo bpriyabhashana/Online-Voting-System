@@ -11,7 +11,7 @@ include '../header/header.php';
 <link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
 
 
-<title>Untitled Document</title>
+<title>Add Election</title>
 
 </head>
 

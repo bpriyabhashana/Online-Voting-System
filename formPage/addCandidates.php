@@ -9,7 +9,22 @@ include '../header/header.php';
 <link rel="stylesheet" type="text/css" href="../css/form.css">
 <link rel="stylesheet" type="text/css" href="../css/addpages.css" />
 <link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 
+<style>
+  ul{
+    background-color:;
+    cursor: pointer;
+  }
+  li{
+    padding: 12px;
+  }
+  li:hover{
+    background-color: #eee;
+   border: 1px solid #ccc;
+  }
+</style>
+ -->
 
 <title>Add Candidates</title>
 
@@ -51,9 +66,9 @@ include '../header/header.php';
          <form action="../include/addCandidates.php" method="POST" enctype="multipart/form-data">
        
          
-            <input type="text" name="number" placeholder="Candidate ID">
+            <input type="text" name="number" placeholder="Candidate ID" autocomplete="off">
            
-            <input type="text" name="name" placeholder="Candidate Name">
+            <input type="text" name="name" placeholder="Candidate Name" autocomplete="off">
 
            <?php
            include '../include/dbhandler.php';
@@ -98,6 +113,10 @@ include '../header/header.php';
           }
           $conn->close();
           ?> 
+          <!-- sugessions -->
+         <!--  <input type="text" name="electrolDistrict" id="district" class="" placeholder="Enter District" autocomplete="off">
+
+          <div id="districtList"></div> -->
 
           <?php
            include '../include/dbhandler.php';
@@ -150,3 +169,31 @@ include '../header/header.php';
   </div>
 </body>
  </html>
+
+ <!-- <script>
+   $(document).ready(function() {
+     $('#district').keyup(function(){
+      var query = $(this).val();
+      if(query != '')
+      {
+        $.ajax({
+          url:"districtSearch.php",
+          method:"POST",
+          data:{query:query},
+          success:function(data)
+          {
+            $('#districtList').fadeIn();
+            $('#districtList').html(data);
+          }
+        });
+      }
+
+     });
+
+     $(document).on('click','li',function(){
+      $('#district').val($(this).text());
+      $('#districtList').fadeOut();
+     });
+
+   });
+ </script> -->

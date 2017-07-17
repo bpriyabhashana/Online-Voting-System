@@ -76,9 +76,9 @@ include '../header/header.php';
 
 
 
-            <input type="text" name="id" placeholder="Inspector NIC No.">
+            <input type="text" name="id" placeholder="Inspector NIC No." autocomplete="off">
            
-            <input type="text" name="name" placeholder="Inspector Name">
+            <input type="text" name="name" placeholder="Inspector Name" autocomplete="off">
 
            
              <?php

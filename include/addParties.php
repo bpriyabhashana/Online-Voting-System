@@ -7,6 +7,7 @@ if (isset($_POST['upload'])) {
 	
 	$partyId = $_POST['partyId'];
 	$name = $_POST['name'];
+	$electrolDistrictId = $_POST['electrolDistrictId'];
 	$logo = $_FILES['logo']['name'];
 
 
@@ -26,14 +27,20 @@ if (isset($_POST['upload'])) {
 		exit();
 	}
 
+	if ($electrolDistrictId == '-- Select District --') {
+		header("Location: ../formPage/addParties.php?error=empty");
+		exit();
+	}
+
+
 
 
 	else{
 		 
 		$target = "../images/partyLogos/".basename($_FILES['logo']['name']);
 
-			$sql = "INSERT INTO party (partyId, name, logo) 
-			VALUES ('$partyId','$name','$logo')";
+			$sql = "INSERT INTO party (partyId, name, electrolDistrictId, logo) 
+			VALUES ('$partyId','$name', '$electrolDistrictId','$logo')";
 			$result = $conn->query($sql);
 
 			header("Location: ../formPage/addParties.php?submitted");

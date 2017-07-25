@@ -4,7 +4,8 @@ create database votepool;
 	create table admin(
 		id int(10)  NOT NULL AUTO_INCREMENT PRIMARY KEY,
 		name varchar(50) NOT NULL,
-		password varchar(50) NOT NULL
+		userName varchar(50) NOT NULL,
+		password varchar(255) NOT NULL
 	);
 
 	create table election(
@@ -15,24 +16,24 @@ create database votepool;
 	);
 
 	create table districtInspectors(
-		id varchar(20) NOT NULL PRIMARY KEY,
+		id varchar(50) ,
 		name varchar(50) NOT NULL,
-		password varchar(50),
-		electrolDistrictId varchar(20) NOT NULL
+		password varchar(255),
+		electrolDistrictId varchar(20) NOT NULL PRIMARY KEY
 	);
 
 	create table divisionInspectors(
-		id varchar(20) NOT NULL PRIMARY KEY,
+		id varchar(50) ,
 		name varchar(50) NOT NULL,
-		password varchar(50),
-		pollingDivisionId varchar(20) NOT NULL
+		password varchar(255),
+		pollingDivisionId varchar(20) NOT NULL PRIMARY KEY
 	);
 
 	create table stationInspectors(
-		id varchar(20) NOT NULL PRIMARY KEY,
+		id varchar(50) ,
 		name varchar(50) NOT NULL,
-		password varchar(50),
-		pollingDistrictId varchar(20) NOT NULL
+		password varchar(255),
+		pollingDistrictId varchar(20) NOT NULL PRIMARY KEY
 	);
 
 	create table voters(
@@ -47,8 +48,8 @@ create database votepool;
 	create table party(
 		partyId varchar(20)  NOT NULL PRIMARY KEY,
 		name varchar(50) NOT NULL,
-		logo varchar(200) NOT NULL,
-		votes int(10) 
+		electrolDistrictId varchar(20) NOT NULL,
+		logo varchar(200) NOT NULL
 	);
 
 	create table candidate(
@@ -72,6 +73,11 @@ create database votepool;
 	create table area(
 		pollingDivision varchar(20) NOT NULL PRIMARY KEY,
 		electrolDistrictId varchar(20) NOT NULL
+	);
+
+	create table station(
+		pollingDistrict varchar(20) NOT NULL PRIMARY KEY,
+		pollingDivision varchar(20) NOT NULL
 	);
 
 
@@ -277,9 +283,26 @@ create database votepool;
 	('Deraniyagala','KEG');
 
 
+	INSERT INTO station (pollingDistrict,pollingDivision)
+	VALUES
+	('Angulaana','Moratuwa'),
+	('Soisapura','Moratuwa'),
+	('Dahampura','Moratuwa'),
+	('Borupana','Moratuwa'),
+	('Uyana','Moratuwa'),
+	('Rawatawaththa','Moratuwa'),
+	('Katubadda','Moratuwa'),
+	('Moratumulla','Moratuwa'),
+	('Villurawaththa','Moratuwa'),
+	('Idibadda','Moratuwa'),
+	('Koralawella','Moratuwa'),
+	('egodauyana','Moratuwa'),
+	('Moratuwa','Moratuwa'),
+	('katukurunda','Moratuwa');
 
 
-INSERT INTO admin (id,name,password)
+
+INSERT INTO admin (name, userName, password)
 	VALUES
 	('test','test','test');
 	
@@ -287,3 +310,30 @@ INSERT INTO admin (id,name,password)
 INSERT INTO election (type, eday, startTime, endTime) 
 		VALUES
 		('pes','2017/12/2','12:15 AM','1:15 PM');
+
+
+
+=============== District Inspectors ======================
+
+AMP 	825271419v	nimal
+ANU 	789456123v 	kamal
+BAD 	789456121v 	sunil
+BAT 	862457962v 	rajitha
+COL 	123456789v 	nishantha
+GAL 	489156256v	nimesh
+GAM 	741852963v	godagama
+HAM 	478962547v	chinthaka
+JAF 	478963254v	suresh
+KAL 	856321475v 	prabath
+KAN 	864795236v 	kushantha
+KEG 	478562145v 	shehan
+KUR 	478963254v 	janaka
+MTL 	479652358v	liyon
+MTR 	741265894v	hasitha
+MON 	473582152v	isuru
+NUW 	479658214v	deeptha
+POL 	496582314v	rumesh
+PUT 	752478952v 	yasindu
+RAT 	478965234v	srinath
+TRI 	478356485v	darshan
+VAN 	654789652v	suranga

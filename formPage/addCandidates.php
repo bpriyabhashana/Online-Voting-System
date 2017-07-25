@@ -28,6 +28,102 @@ include '../header/header.php';
 
 <title>Add Candidates</title>
 
+
+
+<?php
+$host = "localhost";
+$user = "root";
+$password = "";
+$database = "votepool";
+
+$name = "";
+$partyId = "";
+$number = "";
+$electrolDistrictId = "";
+$province = "";
+$photo = "";
+
+
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+
+try{
+  $connect = mysqli_connect($host, $user, $password, $database);
+} catch (Exeption $ex){
+  echo 'error';
+}
+
+function getPosts()
+{
+  $posts = array();
+  $posts[0] = $_POST['name'];
+   $posts[1] = $_POST['partyId'];
+    $posts[2] = $_POST['number'];
+   $posts[3] = $_POST['electrolDistrictId'];
+   $posts[4] = $_POST['province'];
+   $posts[5] = $_POST['photo'];
+  
+   return $posts;
+    
+}
+
+if (isset($_POST['search'])) {
+  $data = getPosts();
+  $search_Query = "SELECT * FROM candidate WHERE name = '$data[0]' AND partyId = '$data[1]'";
+  $search_Result = mysqli_query($connect, $search_Query);
+
+   if ($search_Result) {
+     if (mysqli_num_rows($search_Result)) {
+       while ($row = mysqli_fetch_array($search_Result)) {
+          $name = $row['name'];
+          $partyId = $row['partyId'];
+          $number = $row['candidateNumber'];
+          $electrolDistrictId = $row['electrolDistrictId'];
+          $province = $row['province'];
+          $photo = $row['photo'];
+       }
+     } else{
+       header("Location: ../formPage/addCandidates.php?error=notfound");
+  exit();
+     }
+   } else{
+    echo 'Result Error';
+   }
+}
+
+else if (isset($_POST['delete'])) {
+    $name = $_POST['name2'];
+    $partyId = $_POST['partyId2'];
+   
+
+
+if (empty($name)) {
+  header("Location: ../formPage/addCandidates.php?error=empty");
+  exit();
+}
+
+if (empty($partyId)) {
+  header("Location: ../formPage/addCandidates.php?error=empty");
+  exit();
+}
+
+
+else{ 
+
+    $sql = "DELETE FROM candidate 
+    WHERE name='$name' AND partyId = '$partyId' ";
+    $result = $connect->query($sql);
+
+    
+    
+    header("Location: ../formPage/addCandidates.php?removed");
+
+}
+}
+?>
+
+
+
+
 </head>
 
 <body> 
@@ -164,7 +260,118 @@ include '../header/header.php';
         
 
         </div>
+
+
+
+
+        <!-- =========================  UPDATE and DELETE ======================= -->
         
+
+        <h1 align="center">REMOVE CANDIDATES</h1>
+        <hr />
+
+        <div class="form-style-6" id="formdiv">
+        <h1>REMOVE CANDIDATES</h1>
+
+         <?php
+              $url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+              if (strpos($url, 'removed')!== false) {
+              echo "<center><font color='blue' size='4'> Removed!</font></center>";
+            }
+
+          ?>
+        
+         <form action="../formPage/addCandidates.php" method="POST" enctype="multipart/form-data">
+       
+         
+       
+           
+           <?php
+           include '../include/dbhandler.php';
+                $sql = "SELECT DISTINCT name FROM candidate ORDER BY name";
+          $result = $conn->query($sql);
+
+          if ($result->num_rows > 0) {
+               // output data of each row
+
+               echo "<select name='name'>";
+              // output data of each row
+                echo "<option value='-- Select Name --'>-- Select Name --</option>";
+              while($row = $result->fetch_assoc()) {
+
+                  echo "<option value='" . $row['name'] ."'>" . $row['name']."</option>";
+              }
+              echo "</select>";
+          } else {
+              echo "0 results";
+          }
+          $conn->close();
+          ?>
+
+
+
+            <?php
+           include '../include/dbhandler.php';
+                $sql = "SELECT DISTINCT name,partyId FROM party ORDER BY name";
+          $result = $conn->query($sql);
+
+          if ($result->num_rows > 0) {
+               // output data of each row
+
+               echo "<select name='partyId'>";
+              // output data of each row
+                echo "<option value='-- Select Party --'>-- Select Party --</option>";
+              while($row = $result->fetch_assoc()) {
+
+                  echo "<option value='" . $row['partyId'] ."'>" . $row['name']."</option>";
+              }
+              echo "</select>";
+          } else {
+              echo "0 results";
+          }
+          $conn->close();
+          ?>
+
+          <input type="submit" name="search" value="Search" style="margin-bottom: 20px">
+            <input type="text" name="name2" placeholder="" autocomplete="off"  value="<?php echo $name; ?>">
+            <input type="text" name="partyId2" placeholder="" autocomplete="off"  value="<?php echo $partyId; ?>">
+            <input type="text" name="number" placeholder="" autocomplete="off"  value="<?php echo $number; ?>">
+            <input type="text" name="province" placeholder="" autocomplete="off"  value="<?php echo $province; ?>">
+            <input type="text" name="electrolDistrictId" placeholder="" autocomplete="off"  value="<?php echo $electrolDistrictId; ?>">
+           
+            <input type="hidden" name="photo">
+            <center><img src="../images/candidatePhotos/<?php echo $photo; ?>" width="200px" style="margin-bottom: 20px;  border: 3px solid gray;"></center>
+
+          
+          <!-- sugessions -->
+         <!--  <input type="text" name="electrolDistrict" id="district" class="" placeholder="Enter District" autocomplete="off">
+
+          <div id="districtList"></div> -->
+
+           
+
+       
+        
+              <?php
+                  $url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+                  if (strpos($url, 'error=notfound')!== false) {
+                    echo "<font color='red'> *Candidate not found </font>";
+                  }
+
+                ?>
+             
+       
+        <input type="submit" name="delete" value="Remove">
+       
+         
+          <!--Error handling result view-->
+             
+               
+           
+        </form>
+        
+
+        </div>
   </div>
   </div>
 </body>

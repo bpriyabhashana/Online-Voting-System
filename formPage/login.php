@@ -44,7 +44,9 @@ include '../header/header.php';
               <select name="typeSelect" size="1">
                     <option>--Select Account type--</option>
                         <option value="admin">Administrator</option>
-                        <option value="Inspector">Inspector</option>
+                        <option value="districtInspector">District Inspector</option>
+                        <option value="divisionInspector">Division Inspector</option>
+                        <option value="stationInspector">Station Inspector</option>
                 </select>
 
                  <?php
@@ -56,11 +58,11 @@ include '../header/header.php';
                 ?>
 
              
-             <input name="uname" type="text" maxlength="40" placeholder="User ID" autocomplete="off" />
+             <input type="text" name="uname"  maxlength="40" placeholder="User ID" autocomplete="off" />
           
           
          
-              <input name="password" type="password" maxlength="40" placeholder="Password"/>
+              <input name="password" type="password" name="password" maxlength="40" placeholder="Password"/>
               <br>
               <?php
                $url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];

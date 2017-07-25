@@ -9,7 +9,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-<title>Untitled Document</title>
+<title>District Inspector</title>
 
   <link rel="stylesheet" type="text/css" href="../css/index.css" />
 	<link rel="stylesheet" type="text/css" href="../css/table.css" />
@@ -30,16 +30,16 @@
       <nav>
         <ul>
           <li role="presentation"><p style="font-size: 20px; margin-right: 50px; color:yellow;" >
-        <?php
-          if (isset($_SESSION['uname'])) {
-            echo "HI ".$_SESSION['uname'];
+        <!-- <?php
+          if (isset($_SESSION['district'])) {
+            echo "HI ".$_SESSION['district'];
           }
-        ?>
+        ?> -->
           </p></li>
            <!-- <li role="presentation"> <form>
       <button id="logout" style="background: transparent;" >Add Admin</button>
        </form></li> -->
-       <li  role="presentation"><a href="../formpage/addAdmin.php" target="blank"><p style="font-size: 18px; margin-right: 30px; color:white;" >  Add Admin</p></a></li>
+     
 
         <li  role="presentation"><a href="../formpage/inspectorReg.php" target="blank"><p style="font-size: 18px; margin-right: 30px; color:white;" >  Inspectors Reg.</p></a></li>
 
@@ -56,7 +56,7 @@
 
     <div id="leftdiv">
       
-    <a href="../formpage/addElection.php" target="blank"><img src="../images/png/1.png" class="img-responsive navimg"></a>
+   
     <a href="../formpage/addParties.php" target="blank"><img src="../images/png/2.png" class="img-responsive navimg"></a>
     <a href="../formpage/addCandidates.php" target="blank"><img src="../images/png/3.png" class="img-responsive navimg"></a>
     <a href="../formpage/addInspectors.php" target="blank"><img src="../images/png/5.png" class="img-responsive navimg"></a>
@@ -69,7 +69,19 @@
     <div id="rightdiv">
 
       <div id="titleDiv">
-        <h1 align="center">ADMIN PAGE</h1>
+        
+<?php
+include '../include/dbhandler.php';
+$district = $_SESSION['district'];
+$sql = "SELECT * FROM seats where electrolDistrictId = '$district'";
+$result = $conn->query($sql);
+$row = $result->fetch_assoc();
+$DistrictName = $row['electrolDistrict'];
+
+echo "<h1 align='center'>DISTRICT INSPECTOR PAGE - ".$DistrictName." </h1>";
+
+  ?>
+
       </div>
       
      
@@ -112,11 +124,11 @@ $conn->close();
 <h3></h3>
 
 <div class="wrapper">
-      <div class="col_third">
+      <div class="col_third"><a href="../formpage/addParties.php" target="blank">
         <div class="hover panel">
-          <div class="front">
+          <div class="front">  
             <div class="box1">
-              <div class="boxhed"><p>Register Inspectors</p></div>
+              <div class="boxhed"><p>Add Parties</p></div>
               District Inspectors should add password to the system<br>
               If you have nominated your name will show
               
@@ -127,14 +139,29 @@ $conn->close();
               <p>Back Side</p>
             </div>
           </div>
-        </div>
+        </div></a>
     </div>
 
-    <div class="col_third">
+    <div class="col_third"><a href="../formpage/addCandidates.php" target="blank">
         <div class="hover panel">
           <div class="front">
             <div class="box1">
-              <p>Front Side</p>
+              <p><p>Add Candidates</p></p>
+            </div>
+          </div>
+          <div class="back">
+            <div class="box2">
+              <p>Back Side</p>
+            </div>
+          </div>
+        </div></a>
+    </div>
+
+    <div class="col_third end"> <a href="../formpage/addInspectors.php" target="blank">
+        <div class="hover panel">
+          <div class="front">
+            <div class="box1">
+              <p>Add Inspectors</p>
             </div>
           </div>
           <div class="back">
@@ -143,23 +170,51 @@ $conn->close();
             </div>
           </div>
         </div>
-    </div>
+      </div></a>
 
-    <div class="col_third end">
-        <div class="hover panel">
-          <div class="front">
-            <div class="box1">
-              <p>Front Side</p>
-            </div>
-          </div>
-          <div class="back">
-            <div class="box2">
-              <p>Back Side</p>
-            </div>
-          </div>
-        </div>
-      </div>
    </div>
+
+   <br>
+
+<div class="wrapper">
+      <div class="col_third"> <a href="../formpage/addVoters.php" target="blank">
+        <div class="hover panel">
+          <div class="front">  
+            <div class="box1">
+              <div class="boxhed"><p>Add Voters</p></div>
+              District Inspectors should add password to the system<br>
+              If you have nominated your name will show
+              
+            </div>
+          </div>
+          <div class="back">
+            <div class="box2">
+              <p>Back Side</p>
+            </div>
+          </div>
+        </div></a>
+    </div>
+
+    <div class="col_third"><a href="../formpage/addCandidates.php" target="blank">
+        <div class="hover panel">
+          <div class="front">
+            <div class="box1">
+              <p><p>Add Candidates</p></p>
+            </div>
+          </div>
+          <div class="back">
+            <div class="box2">
+              <p>Back Side</p>
+            </div>
+          </div>
+        </div></a>
+    </div>
+
+   
+
+   </div>
+
+
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
         <script src="../js/index.js"></script>

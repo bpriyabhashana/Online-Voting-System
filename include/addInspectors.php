@@ -40,8 +40,8 @@ if (isset($_POST['upload'])) {
 		
 		
 
-			$sql = "INSERT INTO districtInspectors (id, name, electrolDistrictId) 
-			VALUES ('$id','$name','$electrolDistrictId')";
+			$sql = "INSERT INTO districtInspectors (id, name, password, electrolDistrictId) 
+			VALUES ('$id','$name','0', '$electrolDistrictId')";
 			$result = $conn->query($sql);
 
 			header("Location: ../formPage/addInspectors.php?submitted");

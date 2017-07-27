@@ -26,9 +26,9 @@ function getPosts()
 {
   $posts = array();
   $posts[0] = $_POST['id'];
-   $posts[1] = $_POST['name'];
-   $posts[2] = $_POST['electrolDistrictId'];
-   $posts[3] = $_POST['pollingDistrictId'];
+  $posts[1] = $_POST['name'];
+  $posts[2] = $_POST['electrolDistrictId'];
+  $posts[3] = $_POST['pollingDistrictId'];
    return $posts;
     
 }
@@ -44,7 +44,7 @@ if (isset($_POST['search'])) {
          $id = $row['id'];
           $name = $row['name'];
           $electrolDistrictId = $row['electrolDistrictId'];
-          $pollingDistrictId = $row['electrolDistrictId'];
+          $pollingDistrictId = $row['pollingDistrictId'];
        }
      } else{
       echo 'No Inspector for this District';
@@ -55,8 +55,8 @@ if (isset($_POST['search'])) {
 }
 
 else if (isset($_POST['update'])) {
-  $electrolDistrictId = $_POST['electrolDistrict'];
-  $pollingDistrictId = $_POST['pollingDistrictId'];
+  $electrolDistrictId = $_POST['electrolDistrictId'];
+  $pollingDistrictId = $_POST['pollingDistrictId2'];
   $id = $_POST['id'];
   $name = $_POST['name'];
   $password = $_POST['password'];
@@ -81,14 +81,14 @@ if (empty($rePassword)) {
 
 else{ 
 
-    $sql = "UPDATE districtInspectors SET
-    id = '$id', name='$name', password='$encrypted_password'
-    WHERE electrolDistrictId='$electrolDistrictId' ";
+    $sql = "UPDATE stationInspectors SET
+    id = '$id', name='$name', password='$encrypted_password', electrolDistrictId='$electrolDistrictId'
+    WHERE pollingDistrictId='$pollingDistrictId' ";
     $result = $connect->query($sql);
 
     
     
-    header("Location: ../formPage/inspectorReg.php?submitted");
+    header("Location: ../formPage/stationInspectorReg.php?submitted");
 
 }
 }
@@ -103,7 +103,7 @@ else{
 <link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
 
 
-<title>Register Inspectors</title>
+<title>Register Station Inspectors</title>
 
 </head>
 
@@ -126,11 +126,20 @@ else{
 
 <div id="rightdiv">
     <div id="requestDiv">
-      <h1 align="center">REGISTER INSPECTORS</h1>
+      <h1 align="center">REGISTER STATION INSPECTORS</h1>
         <hr />
 
         <div class="form-style-6" id="formdiv">
-        <h1>REGISTER INSPECTORS</h1>
+        <h1>REGISTER STATION INSPECTORS</h1>
+
+        <?php
+            include '../include/dbhandler.php';
+            $district = $_SESSION['district'];
+            $sql = "SELECT * FROM seats where electrolDistrictId = '$district'";
+            $result = $conn->query($sql);
+            $row = $result->fetch_assoc();
+            $DistrictName = $row['electrolDistrict'];
+          ?>
 
          <?php
               $url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
@@ -140,30 +149,30 @@ else{
 
           ?>
         
-         <form action="inspectorReg.php" method="POST">
+         <form action="stationInspectorReg.php" method="POST">
        
          
-          <?php
+           <?php
            include '../include/dbhandler.php';
-                $sql = "SELECT DISTINCT electrolDistrict, electrolDistrictId FROM seats ORDER BY electrolDistrict";
+                $sql = "SELECT pollingDistrict FROM station INNER JOIN area ON station.pollingDivision = area.pollingDivision";
           $result = $conn->query($sql);
 
           if ($result->num_rows > 0) {
                // output data of each row
 
-               echo "<select name='electrolDistrictId'>";
+               echo "<select name='pollingDistrictId'>";
               // output data of each row
-                echo "<option value='-- Select District --'>-- Select District --</option>";
+                echo "<option value='-- Select Polling District --'>-- Select Polling District --</option>";
               while($row = $result->fetch_assoc()) {
 
-                  echo "<option value='" . $row['electrolDistrictId'] ."'>" . $row['electrolDistrict']."</option>";
+                  echo "<option value='" . $row['pollingDistrict'] ."'>" . $row['pollingDistrict']."</option>";
               }
               echo "</select>";
           } else {
               echo "0 results";
           }
           $conn->close();
-          ?>  
+          ?>   
        
       
         <input type="submit" name="search" value="Search">
@@ -171,7 +180,9 @@ else{
          
           <!--Error handling result view-->
             <br><br> 
-        <input type="text" name="electrolDistrict" value="<?php echo $electrolDistrictId; ?>">
+         
+        <input type="text" name="electrolDistrictId" value="<?php echo $electrolDistrictId; ?>">
+        <input type="text" name="pollingDistrictId2" value="<?php echo $pollingDistrictId; ?>">
         <input type="text" name="id" value="<?php echo $id; ?>">
         <input type="text" name="name" value="<?php echo $name; ?>">
          <input type="password" name="password" placeholder="Enter Password">

@@ -41,7 +41,7 @@
        </form></li> -->
      
 
-        <li  role="presentation"><a href="../formpage/inspectorReg.php" target="blank"><p style="font-size: 18px; margin-right: 30px; color:white;" >  Inspectors Reg.</p></a></li>
+        <li  role="presentation"><a href="../formpage/stationInspectorReg.php" target="blank"><p style="font-size: 18px; margin-right: 30px; color:white;" >  Inspectors Reg.</p></a></li>
 
 
           <li><a href="#"> <form action="../include/logout.php">
@@ -57,9 +57,9 @@
     <div id="leftdiv">
       
    
-    <a href="../formpage/addParties.php" target="blank"><img src="../images/png/2.png" class="img-responsive navimg"></a>
-    <a href="../formpage/addCandidates.php" target="blank"><img src="../images/png/3.png" class="img-responsive navimg"></a>
-    <a href="../formpage/addInspectors.php" target="blank"><img src="../images/png/5.png" class="img-responsive navimg"></a>
+    <a href="../formpage/addPartiesDistrict.php" target="blank"><img src="../images/png/2.png" class="img-responsive navimg"></a>
+    <a href="../formpage/addCandidatesDistrict.php" target="blank"><img src="../images/png/3.png" class="img-responsive navimg"></a>
+    <a href="../formpage/addInspectorsStation.php" target="blank"><img src="../images/png/5.png" class="img-responsive navimg"></a>
     <a href="../formpage/addVoters.php" target="blank"><img src="../images/png/4.png" class="img-responsive navimg"></a>
     
 
@@ -124,7 +124,7 @@ $conn->close();
 <h3></h3>
 
 <div class="wrapper">
-      <div class="col_third"><a href="../formpage/addParties.php" target="blank">
+      <div class="col_third"><a href="../formpage/addPartiesDistrict.php" target="blank">
         <div class="hover panel">
           <div class="front">  
             <div class="box1">
@@ -142,7 +142,7 @@ $conn->close();
         </div></a>
     </div>
 
-    <div class="col_third"><a href="../formpage/addCandidates.php" target="blank">
+    <div class="col_third"><a href="../formpage/addCandidatesDistrict.php" target="blank">
         <div class="hover panel">
           <div class="front">
             <div class="box1">
@@ -157,7 +157,7 @@ $conn->close();
         </div></a>
     </div>
 
-    <div class="col_third end"> <a href="../formpage/addInspectors.php" target="blank">
+    <div class="col_third end"> <a href="../formpage/addInspectorsStation.php" target="blank">
         <div class="hover panel">
           <div class="front">
             <div class="box1">

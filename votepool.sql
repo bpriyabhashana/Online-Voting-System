@@ -22,18 +22,13 @@ create database votepool;
 		electrolDistrictId varchar(20) NOT NULL PRIMARY KEY
 	);
 
-	create table divisionInspectors(
-		id varchar(50) ,
-		name varchar(50) NOT NULL,
-		password varchar(255),
-		pollingDivisionId varchar(20) NOT NULL PRIMARY KEY
-	);
-
+	
 	create table stationInspectors(
 		id varchar(50) ,
 		name varchar(50) NOT NULL,
 		password varchar(255),
-		pollingDistrictId varchar(20) NOT NULL PRIMARY KEY
+		electrolDistrictId varchar(20),
+		pollingDistrict varchar(20) NOT NULL PRIMARY KEY
 	);
 
 	create table voters(
@@ -80,6 +75,15 @@ create database votepool;
 		pollingDivision varchar(20) NOT NULL
 	);
 
+
+/*	create table divisionInspectors(
+		id varchar(50) ,
+		name varchar(50) NOT NULL,
+		password varchar(255),
+		pollingDivisionId varchar(20) NOT NULL PRIMARY KEY
+	);
+*/
+	
 
 	ALTER TABLE voters ADD FOREIGN KEY (electrolDistrictId) REFERENCES seats(electrolDistrictId);
 	ALTER TABLE voters ADD FOREIGN KEY (pollingDivision) REFERENCES area(pollingDivision);
@@ -310,6 +314,11 @@ INSERT INTO admin (name, userName, password)
 INSERT INTO election (type, eday, startTime, endTime) 
 		VALUES
 		('pes','2017/12/2','12:15 AM','1:15 PM');
+
+
+SELECT pollingDistrict FROM station INNER JOIN area
+     ON station.pollingDivision = area.pollingDivision;
+
 
 
 

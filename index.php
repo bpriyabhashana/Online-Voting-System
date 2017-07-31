@@ -32,8 +32,8 @@ include 'header/header.php';
 	<div id="rightdiv">
 
 
-    <h1>CSS 3D FLIP BOX</h1>
-<h3>Flipping content to a div (Transitions and 3D Transforms)</h3>
+    <h1>+++++++++++++</h1>
+<h3>-------------------------</h3>
 
 <div class="wrapper">
       <div class="col_third">

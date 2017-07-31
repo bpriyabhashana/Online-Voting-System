@@ -98,7 +98,7 @@ include '../header/header.php';
 
                echo "<select name='pollingDistrict'>";
               // output data of each row
-                echo "<option value='-- Select Polling Division --'>-- Select Polling Division --</option>";
+                echo "<option value='-- Select Polling District --'>-- Select Polling District --</option>";
               while($row = $result->fetch_assoc()) {
 
                   echo "<option value='" . $row['pollingDistrict'] ."'>" . $row['pollingDistrict']."</option>";

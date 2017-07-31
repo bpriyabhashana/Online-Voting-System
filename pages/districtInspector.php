@@ -60,7 +60,7 @@
     <a href="../formpage/addPartiesDistrict.php" target="blank"><img src="../images/png/2.png" class="img-responsive navimg"></a>
     <a href="../formpage/addCandidatesDistrict.php" target="blank"><img src="../images/png/3.png" class="img-responsive navimg"></a>
     <a href="../formpage/addInspectorsStation.php" target="blank"><img src="../images/png/5.png" class="img-responsive navimg"></a>
-    <a href="../formpage/addVoters.php" target="blank"><img src="../images/png/4.png" class="img-responsive navimg"></a>
+    <a href="../formpage/addVotersDistrict.php" target="blank"><img src="../images/png/4.png" class="img-responsive navimg"></a>
     
 
     </div>
@@ -177,7 +177,7 @@ $conn->close();
    <br>
 
 <div class="wrapper">
-      <div class="col_third"> <a href="../formpage/addVoters.php" target="blank">
+      <div class="col_third"> <a href="../formpage/addVotersDistrict.php" target="blank">
         <div class="hover panel">
           <div class="front">  
             <div class="box1">

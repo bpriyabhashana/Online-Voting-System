@@ -2,6 +2,18 @@
 include '../header/header.php';
 ?>
 
+ <?php
+include '../include/dbhandler.php';
+$district = $_SESSION['district'];
+$sql = "SELECT * FROM seats where electrolDistrictId = '$district'";
+$result = $conn->query($sql);
+$row = $result->fetch_assoc();
+$DistrictName = $row['electrolDistrict'];
+
+
+
+  ?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -79,7 +91,7 @@ if (isset($_POST['search'])) {
           $photo = $row['photo'];
        }
      } else{
-       header("Location: ../formPage/addVoters.php?error=notfound");
+       header("Location: ../formPage/addVotersDistrict.php?error=notfound");
   exit();
      }
    } else{
@@ -92,7 +104,7 @@ else if (isset($_POST['remove'])) {
 
   
 if (empty($nic)) {
-  header("Location: ../formPage/addVoters.php?error=empty");
+  header("Location: ../formPage/addVotersDistrict.php?error=empty");
   exit();
 }
 
@@ -105,7 +117,7 @@ else{
 
     
     
-    header("Location: ../formPage/addVoters.php?removed");
+    header("Location: ../formPage/addVotersDistrict.php?removed");
 
 }
 }
@@ -136,7 +148,9 @@ else{
 
 <div id="rightdiv">
     <div id="requestDiv">
-    	<h1 align="center">ADD VOTERS</h1>
+    	<?php 
+      echo "<h1 align='center'>ADD VOTERS TO - ".$DistrictName." </h1>";
+      ?>
         <hr />
 
         <div class="form-style-6" id="formdiv">
@@ -150,14 +164,14 @@ else{
 
           ?>
         
-         <form action="../include/addVoters.php" method="POST" enctype="multipart/form-data">
+         <form action="../include/addVotersDistrict.php" method="POST" enctype="multipart/form-data">
        
          
             <input type="text" name="nic" placeholder="Voter NIC No.">
            
             <input type="text" name="name" placeholder="Voter Name">
 
-            <?php
+           <!--  <?php
            include '../include/dbhandler.php';
                 $sql = "SELECT DISTINCT electrolDistrict, electrolDistrictId FROM seats ORDER BY electrolDistrict";
           $result = $conn->query($sql);
@@ -177,11 +191,12 @@ else{
               echo "0 results";
           }
           $conn->close();
-          ?> 
+          ?>  -->
+          <input type="hidden" name="electrolDistrictId" value="<?php echo $district; ?>">
 
-          <?php
+          <!-- <?php
            include '../include/dbhandler.php';
-                $sql = "SELECT DISTINCT pollingDivision FROM area ORDER BY pollingDivision";
+                $sql = "SELECT pollingDivision FROM area WHERE electrolDistrictId = '$district'";
           $result = $conn->query($sql);
 
           if ($result->num_rows > 0) {
@@ -189,7 +204,7 @@ else{
 
                echo "<select name='pollingDivision'>";
               // output data of each row
-                echo "<option value='-- Select Polling Division'>-- Select Polling Division --</option>";
+                echo "<option value='-- Select Polling Division --'>-- Select Polling Division --</option>";
               while($row = $result->fetch_assoc()) {
 
                   echo "<option value='" . $row['pollingDivision'] ."'>" . $row['pollingDivision']."</option>";
@@ -199,7 +214,7 @@ else{
               echo "0 results";
           }
           $conn->close();
-          ?>
+          ?>  -->
          <!--   <input type="text" name="pollingDistrict" placeholder="Polling District"> -->
          <input type="text" name="pollingDistrict" id="district" class="" placeholder="Enter Polling District" autocomplete="off">
 
@@ -234,7 +249,9 @@ else{
 
        <!--  ==================== Remove Voters ===================== -->
         
-       <h1 align="center">REMOVE VOTERS</h1>
+      <?php 
+       echo "<h1 align='center'>REMOVE VOTERS FROM - ".$DistrictName." </h1>";
+        ?>
         <hr />
 
         <div class="form-style-6" id="formdiv">
@@ -248,7 +265,7 @@ else{
 
           ?>
         
-         <form action="../formPage/addVoters.php" method="POST" enctype="multipart/form-data">
+         <form action="addVotersDistrict.php" method="POST" enctype="multipart/form-data">
        
          
             <input type="text" name="nic" placeholder="Voter NIC No." value="<?php echo $nic; ?>">

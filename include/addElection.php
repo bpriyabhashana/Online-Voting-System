@@ -78,11 +78,15 @@ else{
 		SELECT partyId FROM party";
 		$result = $conn->query($sql);
 
-		 while($row = $result->fetch_assoc()){
+		$sql = "INSERT INTO tempVoters(nic)
+		SELECT nic FROM voters";
+		$result = $conn->query($sql);
+
+		/* while($row = $result->fetch_assoc()){
 		 	$sql = "INSERT INTO tempParties ANU,AMP
 		VALUES (0,0)";
 		$result = $conn->query($sql);
-		 }
+		 }*/
 
 		header("Location: ../formPage/addElection.php?submitted");
 	

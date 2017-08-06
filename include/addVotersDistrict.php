@@ -25,30 +25,30 @@ if (isset($_POST['upload'])) {
           }
 	//error handling for empty fields
 	if (empty($nic)) {
-		header("Location: ../formPage/addVoters.php?error=empty");
+		header("Location: ../formPage/addVotersDistrict.php?error=empty");
 		exit();
 	}
 
 	if (empty($name)) {
-		header("Location: ../formPage/addVoters.php?error=empty");
+		header("Location: ../formPage/addVotersDistrict.php?error=empty");
 		exit();
 	}
 
 	if (empty($electrolDistrictId)) {
-		header("Location: ../formPage/addVoters.php?error=empty");
+		header("Location: ../formPage/addVotersDistrict.php?error=empty");
 		exit();
 	}
 
 	if (empty($pollingDivision)) {
-		header("Location: ../formPage/addVoters.php?error=empty");
+		header("Location: ../formPage/addVotersDistrict.php?error=empty");
 		exit();
 	}
 	if (empty($pollingDistrict)) {
-		header("Location: ../formPage/addVoters.php?error=empty");
+		header("Location: ../formPage/addVotersDistrict.php?error=empty");
 		exit();
 	}
 	if (empty($photo)) {
-		header("Location: ../formPage/addVoters.php?error=empty");
+		header("Location: ../formPage/addVotersDistrict.php?error=empty");
 		exit();
 	}
 
@@ -63,7 +63,7 @@ if (isset($_POST['upload'])) {
 			VALUES ('$nic','$name','$electrolDistrictId','$pollingDivision','$pollingDistrict','$photo')";
 			$result = $conn->query($sql);
 
-			header("Location: ../formPage/addVoters.php?submitted");
+			header("Location: ../formPage/addVotersDistrict.php?submitted");
 
 			//store in folder
 

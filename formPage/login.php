@@ -45,7 +45,6 @@ include '../header/header.php';
                     <option>--Select Account type--</option>
                         <option value="admin">Administrator</option>
                         <option value="districtInspector">District Inspector</option>
-                        <option value="divisionInspector">Division Inspector</option>
                         <option value="stationInspector">Station Inspector</option>
                 </select>
 

@@ -28,7 +28,7 @@ create database votepool;
 		name varchar(50) NOT NULL,
 		password varchar(255),
 		electrolDistrictId varchar(20),
-		pollingDistrict varchar(20) NOT NULL PRIMARY KEY
+		pollingDistrictId varchar(20) NOT NULL PRIMARY KEY
 	);
 
 	create table voters(

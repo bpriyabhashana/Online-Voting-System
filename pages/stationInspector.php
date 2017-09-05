@@ -113,7 +113,32 @@ else if (isset($_POST['approve'])) {
     </header>
 
     <div id="leftdiv">
-       <div class="form-style-6" id="formdiv" style="margin-top: 130px">
+    <div style="width: 50%; float: left">
+      <?php
+        include '../include/dbhandler.php';
+        $station = $_SESSION['station'];
+        $sql = "select * from tempvoters;";
+        $result = $conn->query($sql);
+        $rowcount1=mysqli_num_rows($result);
+        echo "Total Voters Count  <br><font size='50px'>".$rowcount1."</font>";
+        
+        echo "</div>";
+         echo "<div style='width: 50%; float: right'>";
+        
+         include '../include/dbhandler.php';
+        $sql = "select * from tempvoters where votedStatus=1;";
+        $result = $conn->query($sql);
+        $rowcount2=mysqli_num_rows($result);
+
+        echo "Voted  <br><font size='50px'>".$rowcount2."</font>";
+
+        
+         echo "</div>";
+         
+        echo "<font size='5px' color='blue'>".($rowcount2 / $rowcount1)*100 . "%</font><font size='5px' color='gray'> Voted</font>";
+
+            ?>
+       <div class="form-style-6" id="formdiv" style="margin-top: 50px">
         <h1>Approve Voter</h1>
         <form action="./stationInspector.php" method="POST">
         
@@ -164,13 +189,20 @@ $result = $conn->query($sql);
 $row = $result->fetch_assoc();
 $station = $row['pollingDistrictId'];
 
-echo "<h1 align='center' style=''>DISTRICT INSPECTOR PAGE - ".$station." </h1>";
+echo "<h1 align='center' style=''>STATION INSPECTOR PAGE - ".$station." </h1>";
 
   ?>
 
       </div>
 
-      
+      <?php
+             
+              $url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+              if (strpos($url, 'approved')!== false) { 
+              echo "<center><font color='blue' size='4'> Approved!</font></center>";
+            }
+
+          ?>
 
         <hr />
 
@@ -197,19 +229,19 @@ echo "<h1 align='center' style=''>DISTRICT INSPECTOR PAGE - ".$station." </h1>";
 
        
          
-            <input type="text" name="nic" placeholder="Voter NIC No." value="<?php echo $nic; ?>"  style="margin-top: 20px; margin-bottom: 10px; height: 50px; font-size: 20px ;  padding: 2%; color: #555;">
+            <input type="text" name="nic" placeholder="Voter NIC No." value="<?php echo $nic;  ?>"  style="margin-top: 20px; margin-bottom: 10px; height: 50px; font-size: 20px ;  padding: 2%; color: #555;">
 
 
 
-            <input type="text" name="name" placeholder="Voter Name" value="<?php echo $name; ?>" style="margin-top: 20px; margin-bottom: 10px; height: 50px; font-size: 20px ;  padding: 2%; color: #555;"> <br>
+            <input type="text" name="name" placeholder="Voter Name" value="<?php echo $name; ?>"  disabled style="margin-top: 20px; margin-bottom: 10px; height: 50px; font-size: 20px ;  padding: 2%; color: #555;"> <br>
 
-            <input type="text" name="electrolDistrictId" placeholder="District Id" value="<?php echo $electrolDistrictId; ?>" style="margin-top: 20px; margin-bottom: 5px; height: 50px; font-size: 20px ;  padding: 2%; color: #555;">
+            <input type="text" name="electrolDistrictId" placeholder="District Id" value="<?php echo $electrolDistrictId; ?>" style="margin-top: 20px; margin-bottom: 5px; height: 50px; font-size: 20px ;  padding: 2%; color: #555;" disabled>
 
-            <input type="text" name="pollingDivision" placeholder="Polling Division" value="<?php echo $pollingDivision; ?>" style="margin-top: 20px; margin-bottom: 5px; height: 50px; font-size: 20px ;  padding: 2%; color: #555;">
+            <input type="text" name="pollingDivision" placeholder="Polling Division" value="<?php echo $pollingDivision; ?>" style="margin-top: 20px; margin-bottom: 5px; height: 50px; font-size: 20px ;  padding: 2%; color: #555;" disabled>
          
 
 
-            <input type="text" name="pollingDistrict" placeholder="Polling District" value="<?php echo $pollingDistrict; ?>" style="margin-top: 20px; margin-bottom: 5px; height: 50px; font-size: 20px;  padding: 2%; color: #555;">
+            <input type="text" name="pollingDistrict" placeholder="Polling District" value="<?php echo $pollingDistrict; ?>" style="margin-top: 20px; margin-bottom: 5px; height: 50px; font-size: 20px;  padding: 2%; color: #555;" disabled>
 
              <br>
             

@@ -41,10 +41,11 @@ create database votepool;
 	);
 
 	create table party(
-		partyId varchar(20)  NOT NULL PRIMARY KEY,
+		partyId varchar(20)  NOT NULL,
 		name varchar(50) NOT NULL,
 		electrolDistrictId varchar(20) NOT NULL,
-		logo varchar(200) NOT NULL
+		logo varchar(200) NOT NULL,
+		PRIMARY KEY (partyId, electrolDistrictId)
 	);
 
 	create table candidate(
@@ -85,19 +86,19 @@ create database votepool;
 */
 	
 
-	ALTER TABLE voters ADD FOREIGN KEY (electrolDistrictId) REFERENCES seats(electrolDistrictId);
-	ALTER TABLE voters ADD FOREIGN KEY (pollingDivision) REFERENCES area(pollingDivision);
+	
 	ALTER TABLE candidate ADD FOREIGN KEY (partyId) REFERENCES party(partyId);
 	ALTER TABLE candidate ADD FOREIGN KEY (electrolDistrictId) REFERENCES seats(electrolDistrictId);
-	ALTER TABLE area ADD FOREIGN KEY (electrolDistrictId) REFERENCES seats(electrolDistrictId);
+	ALTER TABLE stationInspectors ADD FOREIGN KEY (electrolDistrictId) REFERENCES seats(electrolDistrictId);
+	ALTER TABLE voters ADD FOREIGN KEY (electrolDistrictId) REFERENCES seats(electrolDistrictId);
+	ALTER TABLE party ADD FOREIGN KEY (electrolDistrictId) REFERENCES seats(electrolDistrictId);
+	
 	
 
 	INSERT tempVoters SELECT nic FROM voters;
 
 
-	
-
-	INSERT INTO seats (electrolDistrictId,electrolDistrict,province,count)
+	INSERT INTO seats (electrolDistrictId,electrolDistrict,province, count)
 	VALUES
 	('AMP','Ampara','Eastern',7),
 	('ANU','Anuradhapura','North Central',9),
@@ -112,15 +113,18 @@ create database votepool;
 	('KAN','Kandy','Central',12),
 	('KEG','Kegalla','Sabaragamuwa',9),
 	('KUR','Kurunegala','North Western',15),
+	('MON','Monaragala','Uva',5),
 	('MTL','Matale','Central',5),
 	('MTR','Matara','Southern',8),
-	('MON','Monaragala','Uva',5),
 	('NUW','Nuwara Eliya','Central',8),
 	('POL','Polonnaruwa','North Central',5),
 	('PUT','Puttalam','North Western',8),
 	('RAT','Ratnapura','Sabaragamuwa',11),
 	('TRI','Trincomalee','Eastern',4),
 	('VAN','Vanni','Northern',6);
+
+
+	
 
 
 
@@ -302,7 +306,23 @@ create database votepool;
 	('Koralawella','Moratuwa'),
 	('egodauyana','Moratuwa'),
 	('Moratuwa','Moratuwa'),
-	('katukurunda','Moratuwa');
+	('katukurunda','Moratuwa'),
+	('Sammanthranapura','Colombo'),
+	('Mattakkuliya','Colombo'),
+	('Modara','Colombo'),
+	('Madampitiya','Colombo'),
+	('Mahawatta','Colombo'),
+	('Aluthmawatha','Colombo'),
+	('Lunupokuna','Colombo'),
+	('Bloemendhal','Colombo'),
+	('Kotahena East','Colombo'),
+	('Kotahena West','Colombo'),
+	('Kochchikade North','Colombo'),
+	('Jinthupitiya','Colombo'),
+	('Massangasweediya','Colombo'),
+	('Bazaar','Colombo'),
+	('Grandpass South','Colombo'),
+	('Grandpass','Colombo');
 
 
 
@@ -318,6 +338,11 @@ INSERT INTO election (type, eday, startTime, endTime)
 
 SELECT pollingDistrict FROM station INNER JOIN area
      ON station.pollingDivision = area.pollingDivision;
+
+DROP TABLE election;
+DROP TABLE tempvoters;
+DROP TABLE tempparties;
+DROP TABLE tempCandidate;
 
 
 

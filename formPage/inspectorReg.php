@@ -11,7 +11,7 @@ $database = "votepool";
 $id = "";
 $name = "";
 $electrolDistrictId = "";
-$pollingDistrictId = "";
+
 
 
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
@@ -28,14 +28,14 @@ function getPosts()
   $posts[0] = $_POST['id'];
    $posts[1] = $_POST['name'];
    $posts[2] = $_POST['electrolDistrictId'];
-   $posts[3] = $_POST['pollingDistrictId'];
+
    return $posts;
     
 }
 
 if (isset($_POST['search'])) {
   $data = getPosts();
-  $search_Query = "SELECT * FROM stationInspectors WHERE pollingDistrictId = '$data[3]'";
+  $search_Query = "SELECT * FROM districtInspectors WHERE electrolDistrictId = '$data[2]'";
   $search_Result = mysqli_query($connect, $search_Query);
 
    if ($search_Result) {
@@ -44,7 +44,6 @@ if (isset($_POST['search'])) {
          $id = $row['id'];
           $name = $row['name'];
           $electrolDistrictId = $row['electrolDistrictId'];
-          $pollingDistrictId = $row['electrolDistrictId'];
        }
      } else{
       echo 'No Inspector for this District';
@@ -56,7 +55,6 @@ if (isset($_POST['search'])) {
 
 else if (isset($_POST['update'])) {
   $electrolDistrictId = $_POST['electrolDistrict'];
-  $pollingDistrictId = $_POST['pollingDistrictId'];
   $id = $_POST['id'];
   $name = $_POST['name'];
   $password = $_POST['password'];

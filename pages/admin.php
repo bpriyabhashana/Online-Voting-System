@@ -56,12 +56,12 @@
 
     <div id="leftdiv">
       
-    <a href="../formpage/addElection.php" target="blank"><img src="../images/png/1.png" class="img-responsive navimg"></a>
+   
     <a href="../formpage/addParties.php" target="blank"><img src="../images/png/2.png" class="img-responsive navimg"></a>
     <a href="../formpage/addCandidates.php" target="blank"><img src="../images/png/3.png" class="img-responsive navimg"></a>
     <a href="../formpage/addInspectors.php" target="blank"><img src="../images/png/5.png" class="img-responsive navimg"></a>
     <a href="../formpage/addVoters.php" target="blank"><img src="../images/png/4.png" class="img-responsive navimg"></a>
-    
+     <a href="../formpage/addElection.php" target="blank"><img src="../images/png/1.png" class="img-responsive navimg"></a>
 
     </div>
 
@@ -112,11 +112,11 @@ $conn->close();
 <h3></h3>
 
 <div class="wrapper">
-      <div class="col_third">
+      <div class="col_third"><a href="../formpage/viewResult.php">
         <div class="hover panel">
           <div class="front">
             <div class="box1">
-              <div class="boxhed"><p>Register Inspectors</p></div>
+              <div class="boxhed"><p>view results</p></div>
               District Inspectors should add password to the system<br>
               If you have nominated your name will show
               
@@ -127,14 +127,14 @@ $conn->close();
               <p>Back Side</p>
             </div>
           </div>
-        </div>
+       </a> </div>
     </div>
 
     <div class="col_third">
         <div class="hover panel">
           <div class="front">
             <div class="box1">
-              <p>Front Side</p>
+              <p>view candidates</p>
             </div>
           </div>
           <div class="back">

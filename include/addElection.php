@@ -47,6 +47,14 @@ else{
 		)";
 		$result = $conn->query($sql);
 
+		$sql = "CREATE TABLE tempCandidate(
+		candidateNumber int(10) NOT NULL,
+		electrolDistrictId varchar(20) NOT NULL,
+		partyId varchar(20) NOT NULL,
+		votes int(10) 
+		)";
+		$result = $conn->query($sql);
+
 		$sql = "CREATE TABLE tempParties(
 		partyId varchar(20) NOT NULL,
 		AMP int(10),
@@ -81,6 +89,10 @@ else{
 		$sql = "INSERT INTO tempVoters(nic)
 		SELECT nic FROM voters";
 		$result = $conn->query($sql);
+
+		$sql = " INSERT INTO tempCandidate(candidateNumber,electrolDistrictId,partyId)
+    	SELECT candidateNumber,electrolDistrictid,partyid FROM candidate";
+    	$result = $conn->query($sql);
 
 		/* while($row = $result->fetch_assoc()){
 		 	$sql = "INSERT INTO tempParties ANU,AMP

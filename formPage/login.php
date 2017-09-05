@@ -46,6 +46,7 @@ include '../header/header.php';
                         <option value="admin">Administrator</option>
                         <option value="districtInspector">District Inspector</option>
                         <option value="stationInspector">Station Inspector</option>
+                        <option value="vote">Vote</option>
                 </select>
 
                  <?php

@@ -13,22 +13,22 @@ if (isset($_POST['upload'])) {
 
 	//error handling for empty fields
 	if (empty($partyId)) {
-		header("Location: ../formPage/addParties.php?error=empty");
+		header("Location: ../formPage/addPartiesDistrict.php?error=empty");
 		exit();
 	}
 
 	if (empty($name)) {
-		header("Location: ../formPage/addParties.php?error=empty");
+		header("Location: ../formPage/addPartiesDistrict.php?error=empty");
 		exit();
 	}
 
 	if (empty($logo)) {
-		header("Location: ../formPage/addParties.php?error=empty");
+		header("Location: ../formPage/addPartiesDistrict.php?error=empty");
 		exit();
 	}
 
 	if ($electrolDistrictId == '-- Select District --') {
-		header("Location: ../formPage/addParties.php?error=empty");
+		header("Location: ../formPage/addPartiesDistrict.php?error=empty");
 		exit();
 	}
 

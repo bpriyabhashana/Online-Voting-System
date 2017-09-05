@@ -17,7 +17,7 @@ include '../header/header.php';
 
      $sql = "DELETE FROM candidate WHERE partyId = '$partyId' AND electrolDistrictId= '$electrolDistrictId'";
     $result = $conn->query($sql);
-    header("Location: ../formPage/addParties.php?removed");
+    header("Location: ../formPage/addPartiesDistrict.php?removed");
    
   }
 
@@ -84,7 +84,7 @@ echo "<h1 align='center'>ADD PARTIES TO - ".$DistrictName." </h1>";
 
           ?>
         
-         <form action="../include/addParties.php" method="POST" enctype="multipart/form-data">
+         <form action="../include/addPartiesDistrict.php" method="POST" enctype="multipart/form-data">
        
          
             <input type="text" name="partyId" placeholder="Party ID">
@@ -147,7 +147,7 @@ echo "<h1 align='center'>REMOVE PARTIES FROM - ".$DistrictName." </h1>";
 
           ?>
         
-         <form action="addParties.php" method="post" enctype="multipart/form-data">
+         <form action="addPartiesDistrict.php" method="post" enctype="multipart/form-data">
        
          
         
